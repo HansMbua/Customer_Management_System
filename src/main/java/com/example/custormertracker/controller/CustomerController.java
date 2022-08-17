@@ -11,11 +11,12 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-
+   private Logger mylogger = Logger.getLogger(getClass().getName());
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
 
@@ -84,6 +85,22 @@ public class CustomerController {
 
         return "redirect:/customer/list";
     }
+
+
+    @GetMapping("/searchCustomer")
+    public String search(@RequestParam("theSearchName") String firstName, Model theModel){
+
+        Customer theCustomer = customerService.searchCustomer(firstName);
+        if (theCustomer != null){
+            System.out.println(theCustomer);
+            theModel.addAttribute("customer",theCustomer);
+            //show only the found customer on the list
+
+            return "redirect:/customer/list";
+        }
+     return "notFound";
+    }
+
 
 }
 

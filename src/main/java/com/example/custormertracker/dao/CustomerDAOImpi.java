@@ -10,12 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.Currency;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Repository
-public class CustomerDAOImpi implements CustomerDAO{
+public class CustomerDAOImpi implements CustomerDAO {
 
     //need to inject my hibernate data dependency so my database can use it
     @Autowired
@@ -27,7 +28,7 @@ public class CustomerDAOImpi implements CustomerDAO{
         Session session = sessionFactory.getCurrentSession();
 
         //create a query
-        Query<Customer> theQuery = session.createQuery("from Customer order by lastName",Customer.class);
+        Query<Customer> theQuery = session.createQuery("from Customer order by lastName", Customer.class);
 
 //       Function<Customer, String> byFirstName = Customer::getFirstName;
 //        Function<Customer, String> byLastName = Customer::getLastName;
@@ -52,10 +53,10 @@ public class CustomerDAOImpi implements CustomerDAO{
 
     @Override
     public Customer getCustomer(int theId) {
-       Session session = sessionFactory.getCurrentSession();
-       Customer theCustomer = session.get(Customer.class,theId);
+        Session session = sessionFactory.getCurrentSession();
+        Customer theCustomer = session.get(Customer.class, theId);
 
-       return theCustomer;
+        return theCustomer;
     }
 
     @Override
@@ -67,6 +68,26 @@ public class CustomerDAOImpi implements CustomerDAO{
 //        theQuery.executeUpdate();
 
         session.delete(customer);
+
+    }
+
+    @Override
+    public Customer searchCustomer(String firstName) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Customer> theQuery = session.createQuery("from Customer order by lastName", Customer.class);
+        List<Customer> customers = theQuery.getResultList();
+        System.out.println("DAO: "+firstName);
+        for (Iterator i = customers.iterator(); i.hasNext();){
+           Customer theCustomer = (Customer)i.next();
+           if (firstName.equals(theCustomer.getFirstName())){
+               System.out.println("DAO firstname in IF: "+firstName);
+               return theCustomer;
+
+           }
+        }
+
+        return null;
+
 
     }
 
