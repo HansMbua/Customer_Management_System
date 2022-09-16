@@ -1,6 +1,0 @@
-com.example.custormertracker.HelloServlet=javax.servlet.annotation.WebServlet
-com.example.custormertracker.aspect.CRMLoggingAspect=org.springframework.stereotype.Component
-com.example.custormertracker.controller.CustomerController=org.springframework.stereotype.Component
-com.example.custormertracker.dao.CustomerDAOImpi=org.springframework.stereotype.Component
-com.example.custormertracker.entity.Customer=javax.persistence.Entity,javax.persistence.Table
-com.example.custormertracker.service.CustomerServiceImpl=org.springframework.stereotype.Component

@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="custormer-tracker" />
+        <module name="Customer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="custormer-tracker" target="9" />
+      <module name="Customer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/custormer-tracker.iml" filepath="$PROJECT_DIR$/custormer-tracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Customer.iml" filepath="$PROJECT_DIR$/Customer.iml" />
     </modules>
   </component>
 </project>
